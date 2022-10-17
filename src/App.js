@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+//import Home from "./components/Home/Home";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Main />
     </div>
   );
 }
 
 export default App;
+const socket = new WebSocket("ws://localhost:3000");
+
+socket.addEventListener("open", () => {
+  // envoi d'un message au serveur
+  socket.send(
+    JSON.stringify({
+      type: "bonjour du client",
+      content: [3, "4"],
+    })
+  );
+});

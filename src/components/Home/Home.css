@@ -1,0 +1,51 @@
+.home {
+  display: flex;
+  height: 100vh;
+}
+
+.home div {
+  width: 50%;
+}
+
+.left_side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home_title {
+  color: #1966ff;
+}
+
+.home_img {
+  margin: auto;
+  align-self: center;
+}
+
+.home_img img {
+  width: 400px;
+  margin: auto;
+}
+
+.home_btns {
+  margin: auto;
+}
+
+.home_btns_sign_in,
+.home_btns_sign_up {
+  display: block;
+  background: #1966ff;
+  padding: 8px 25px;
+  margin: 10px auto;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 400ms ease-in-out;
+}
+
+.home_btns_sign_in:hover,
+.home_btns_sign_up:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

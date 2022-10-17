@@ -1,0 +1,60 @@
+.right_side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #1966ff;
+}
+
+.right_side_title {
+  color: #fff;
+  font-size: 30px;
+  padding: 15px 0;
+}
+
+.form_control {
+  margin: 10px;
+}
+
+.user_input {
+  min-width: 350px;
+  background: #1966ff;
+  border: solid 1px #fff;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.user_input::placeholder {
+  color: #fff;
+}
+
+.user_input:focus-visible {
+  outline: none;
+}
+
+.forgot_password {
+  margin: auto;
+}
+
+.forgot_password a {
+  margin: auto;
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff;
+}
+
+.connexion_btn {
+  width: 30px;
+  background: #fff;
+  margin: 20px 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #1966ff;
+  transition: all 400ms ease-in-out;
+}
+
+.connexion_btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
