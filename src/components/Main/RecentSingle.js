@@ -14,7 +14,7 @@ function RecentSingle({ message, participants }) {
   const getMessage = (id) => {
     axios({
       method: "post",
-      url: "http://localhost:3001/message/discuss",
+      url: `${process.env.REACT_APP_API_URL}/message/discuss`,
       data: {
         participants: [id, userId],
       },

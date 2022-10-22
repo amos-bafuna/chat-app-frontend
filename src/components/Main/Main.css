@@ -64,6 +64,11 @@
   margin-bottom: 20px;
 }
 
+.deconnect_icon:hover {
+  color: #ff0000;
+  cursor: pointer;
+}
+
 .recent_culumn {
   width: 35%;
   margin: 15px;

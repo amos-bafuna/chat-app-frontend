@@ -5,8 +5,6 @@ import axios from "axios";
 import "./SignIn.css";
 
 function SignIn() {
-  const host = "http://localhost:3001/main/login";
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
@@ -15,7 +13,7 @@ function SignIn() {
   const submit = () => {
     axios({
       method: "post",
-      url: host,
+      url: `${process.env.REACT_APP_API_URL}/main/login`,
       data: {
         email: email,
         password: password,

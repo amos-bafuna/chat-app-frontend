@@ -16,7 +16,7 @@ function Main() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:3001/message/recent",
+      url: `${process.env.REACT_APP_API_URL}/message/recent`,
       headers: {
         Authorization: token,
       },
@@ -39,7 +39,13 @@ function Main() {
             <AiFillMessage />
           </div>
         </div>
-        <div className="deconnect_icon">
+        <div
+          className="deconnect_icon"
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userId");
+          }}
+        >
           <MdLogout />
         </div>
       </div>
