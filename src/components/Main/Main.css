@@ -186,10 +186,6 @@
   justify-content: space-between;
   z-index: 2;
   box-sizing: border-box;
-  border-radius: 1rem;
-  background: white;
-  box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1),
-    0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
   margin: 0 30px;
 }
 
@@ -197,21 +193,38 @@
   box-sizing: border-box;
   padding: 0.5rem 1rem;
   margin: 0 5px;
-  background: #fff;
-  border-radius: 1.125rem 1.125rem 1.125rem 0;
   min-height: 2.25rem;
   max-width: 66%;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.075),
-    0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
 }
 
+.message-box {
+  display: flex;
+  flex-direction: row;
+}
+.in {
+  justify-content: flex-end;
+}
 .discuss_message_in {
+  justify-self: flex-end;
   background: #eaeaea;
   padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .discuss_message_out {
   background: #1966ff;
   color: #fff;
   padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.inbox_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  max-width: 400px;
 }

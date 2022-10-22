@@ -44,11 +44,18 @@
   color: #fff;
 }
 
+.errorMessage {
+  margin: 0 10px;
+  font-size: 12px;
+  text-align: start;
+  color: #ff0000;
+}
+
 .connexion_btn {
-  width: 30px;
   background: #fff;
   margin: 20px 10px;
   padding: 10px;
+  border: none;
   border-radius: 10px;
   color: #1966ff;
   transition: all 400ms ease-in-out;

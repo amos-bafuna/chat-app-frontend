@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Link,
+  Navigate,
+} from "react-router-dom";
 import HomeImg from "../../images/homeImg.png";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -26,6 +32,7 @@ function Home() {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </Router>
