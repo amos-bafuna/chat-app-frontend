@@ -1,20 +1,20 @@
-import React, { useState } from "react"
-import axios from "axios"
-import "./SignIn.css"
+import React, { useState } from "react";
+import axios from "axios";
+import "./SignIn.css";
 
 function SignUp() {
-  const [userName, setUserName] = useState("")
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   //const [profil, setProfil] = useState("");
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const submit = () => {
     if (password !== confirmPassword) {
-      setErrorMessage("Les mots de passe ne sont pas identique")
+      setErrorMessage("Les mots de passe ne sont pas identique");
     } else {
       axios({
         method: "post",
@@ -29,13 +29,13 @@ function SignUp() {
         },
       })
         .then((message) => {
-          console.log(message)
+          console.log(message);
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
-  }
+  };
 
   return (
     <div className="right_side">
@@ -44,8 +44,8 @@ function SignUp() {
         action=""
         className="sign_in_form"
         onSubmit={(e) => {
-          e.preventDefault()
-          submit()
+          e.preventDefault();
+          submit();
         }}
       >
         <div className="form_control">
@@ -121,7 +121,7 @@ function SignUp() {
         <button className="connexion_btn">S&apos;inscrire</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

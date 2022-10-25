@@ -1,15 +1,15 @@
-import React from "react"
+import React from "react";
 import {
   Route,
   BrowserRouter as Router,
   Routes,
   Link,
   Navigate,
-} from "react-router-dom"
-import HomeImg from "../../images/homeImg.png"
-import SignIn from "./SignIn"
-import SignUp from "./SignUp"
-import "./Home.css"
+} from "react-router-dom";
+import HomeImg from "../../images/homeImg.png";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import "./Home.css";
 
 function Home() {
   return (
@@ -36,7 +36,7 @@ function Home() {
         </Routes>
       </div>
     </Router>
-  )
+  );
 }
 
-export default Home
+export default Home;
