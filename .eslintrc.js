@@ -19,4 +19,4 @@ module.exports = {
     "object-curly-spacing": 0,
     "react/prop-types": "off",
   },
-}
+};
