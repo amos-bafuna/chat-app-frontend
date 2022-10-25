@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import RecentSingle from "./RecentSingle";
-import Message from "./Message";
-import { MdLogout } from "react-icons/md";
-import { AiFillMessage } from "react-icons/ai";
-import { TiContacts } from "react-icons/ti";
-import { userContext } from "../../context";
-import { BiSearch } from "react-icons/bi";
-import axios from "axios";
-import ProfilePic from "../../images/profile1.jpg";
-import "./Main.css";
+import React, { useContext, useEffect, useState } from "react"
+import RecentSingle from "./RecentSingle"
+import Message from "./Message"
+import { MdLogout } from "react-icons/md"
+import { AiFillMessage } from "react-icons/ai"
+import { TiContacts } from "react-icons/ti"
+import { userContext } from "../../context"
+import { BiSearch } from "react-icons/bi"
+import axios from "axios"
+import ProfilePic from "../../images/profile1.jpg"
+import "./Main.css"
 
 function Main() {
-  const { token, userId, discuss } = useContext(userContext);
-  const [recentMessage, setRecentMessage] = useState([]);
+  const { token, userId, discuss } = useContext(userContext)
+  const [recentMessage, setRecentMessage] = useState([])
 
   useEffect(() => {
     axios({
@@ -25,9 +25,9 @@ function Main() {
         id: userId,
       },
     }).then((response) => {
-      setRecentMessage(response.data);
-    });
-  }, [token, userId]);
+      setRecentMessage(response.data)
+    })
+  }, [token, userId])
 
   return (
     <div className="main">
@@ -48,9 +48,9 @@ function Main() {
         <div
           className="deconnect_icon"
           onClick={() => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("userId");
-            window.location.reload(false);
+            localStorage.removeItem("token")
+            localStorage.removeItem("userId")
+            window.location.reload(false)
           }}
         >
           <MdLogout />
@@ -84,7 +84,7 @@ function Main() {
       </div>
       <Message discussInfo={discuss} />
     </div>
-  );
+  )
 }
 
-export default Main;
+export default Main
