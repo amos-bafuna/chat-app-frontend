@@ -17,5 +17,6 @@ module.exports = {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "object-curly-spacing": 0,
+    "react/prop-types": "off",
   },
 }
