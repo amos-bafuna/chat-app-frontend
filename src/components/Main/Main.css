@@ -56,12 +56,36 @@
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   transform: translateX(35%);
+  transition: all 200ms ease-in-out;
+}
+
+.contact_icon {
+  background: #1056e2;
+  margin-top: 10px;
+  font-size: 40px;
+  text-align: center;
+  vertical-align: baseline;
+  color: #fff;
+  border-radius: 20px;
+  width: 71%;
+  border-right: 5px solid yellow;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  transform: translateX(35%);
+  transition: all 200ms ease-in-out;
+}
+
+.contact_icon:hover,
+.inbox_icon:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 .deconnect_icon {
   color: #fff;
   font-size: 30px;
   margin-bottom: 20px;
+  transition: all 200ms ease-out;
 }
 
 .deconnect_icon:hover {

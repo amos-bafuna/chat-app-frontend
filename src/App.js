@@ -20,9 +20,15 @@ function App() {
 
   return (
     <userContext.Provider
-      value={{ setIsConnected, token, userId, discuss, setDiscuss }}
+      value={{
+        setIsConnected,
+        token,
+        userId,
+        discuss,
+        setDiscuss,
+      }}
     >
-      <div className="App">{!isConnected ? <Home /> : <Main />}</div>
+      <div className="App">{isConnected ? <Main /> : <Home />}</div>
     </userContext.Provider>
   );
 }

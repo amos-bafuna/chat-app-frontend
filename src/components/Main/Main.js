@@ -3,6 +3,7 @@ import RecentSingle from "./RecentSingle";
 import Message from "./Message";
 import { MdLogout } from "react-icons/md";
 import { AiFillMessage } from "react-icons/ai";
+import { TiContacts } from "react-icons/ti";
 import { userContext } from "../../context";
 import { BiSearch } from "react-icons/bi";
 import axios from "axios";
@@ -35,8 +36,13 @@ function Main() {
           <div className="profile_picture">
             <img src={ProfilePic} alt="" />
           </div>
-          <div className="inbox_icon">
-            <AiFillMessage />
+          <div>
+            <div className="inbox_icon">
+              <AiFillMessage />
+            </div>
+            <div className="contact_icon">
+              <TiContacts />
+            </div>
           </div>
         </div>
         <div
@@ -44,6 +50,7 @@ function Main() {
           onClick={() => {
             localStorage.removeItem("token");
             localStorage.removeItem("userId");
+            window.location.reload(false);
           }}
         >
           <MdLogout />
