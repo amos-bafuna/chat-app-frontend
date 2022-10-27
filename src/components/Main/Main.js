@@ -1,33 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import RecentSingle from "./RecentSingle";
+import React, { useContext, useState } from "react";
 import Message from "./Message";
+import Users from "./Users";
+import { userContext } from "../../context";
 import { MdLogout } from "react-icons/md";
 import { AiFillMessage } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
-import { userContext } from "../../context";
 import { BiSearch } from "react-icons/bi";
-import axios from "axios";
 import ProfilePic from "../../images/profile1.jpg";
 import "./Main.css";
+import Recents from "./Recents";
 
 function Main() {
-  const { token, userId, discuss } = useContext(userContext);
-  const [recentMessage, setRecentMessage] = useState([]);
-
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: `${process.env.REACT_APP_API_URL}/message/recent`,
-      headers: {
-        Authorization: token,
-      },
-      params: {
-        id: userId,
-      },
-    }).then((response) => {
-      setRecentMessage(response.data);
-    });
-  }, [token, userId]);
+  const { discuss } = useContext(userContext);
+  const [showContacts, setShowContacts] = useState(true);
 
   return (
     <div className="main">
@@ -37,10 +22,13 @@ function Main() {
             <img src={ProfilePic} alt="" />
           </div>
           <div>
-            <div className="inbox_icon">
+            <div className="inbox_icon" onClick={() => setShowContacts(true)}>
               <AiFillMessage />
             </div>
-            <div className="contact_icon">
+            <div
+              className="contact_icon"
+              onClick={() => setShowContacts(false)}
+            >
               <TiContacts />
             </div>
           </div>
@@ -69,17 +57,7 @@ function Main() {
               placeholder="Recherche"
             />
           </form>
-          <div className="recent_discuss">
-            <div className="recent_title">Recent</div>
-            {recentMessage &&
-              recentMessage?.map((element) => (
-                <RecentSingle
-                  key={element._id}
-                  participants={element.participants}
-                  message={element.messages[element.messages.length - 1]}
-                />
-              ))}
-          </div>
+          {showContacts ? <Recents /> : <Users />}
         </div>
       </div>
       <Message discussInfo={discuss} />

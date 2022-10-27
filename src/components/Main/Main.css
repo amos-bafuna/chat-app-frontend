@@ -98,7 +98,8 @@
   margin: 15px;
 }
 
-.recent_discuss {
+.recent_discuss,
+.contact {
   margin-top: 20px;
   background: #fff;
   border-radius: 15px;
@@ -131,7 +132,8 @@
   font-weight: 500;
 }
 
-.recent_title {
+.recent_title,
+.contact_title {
   margin: 20px 0;
   font-size: 20px;
   font-weight: 600;
