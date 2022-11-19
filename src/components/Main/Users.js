@@ -3,6 +3,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { userContext } from "../../context";
 import UserSingle from "../Main/UserSingle";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Users() {
   const [users, setUsers] = useState();
@@ -23,17 +24,26 @@ function Users() {
     <div>
       <div className="contact">
         <div className="contact_title">Contacts</div>
-        {users &&
+        {users ? (
           users
             ?.filter((elem) => elem.id != userId)
             .map((element) => (
               <UserSingle
-                key={element._id}
-                id={element._id}
+                key={element.id}
+                contactId={element.id}
                 name={element.name}
                 lastName={element.lastName}
               />
-            ))}
+            ))
+        ) : (
+          <ClipLoader
+            color="#1056e2"
+            //loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        )}
       </div>
     </div>
   );

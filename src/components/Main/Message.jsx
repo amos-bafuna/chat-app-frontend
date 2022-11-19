@@ -5,16 +5,38 @@ import { userContext } from "../../context";
 import axios from "axios";
 import { useState } from "react";
 import InboxImg from "../../images/inbox.svg";
+import { useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Message({ discussInfo }) {
-  const { userId, token } = useContext(userContext);
+  const { userId, token, discussID, socket, loading } = useContext(userContext);
   const [messageText, setMessageText] = useState("");
+  const [messageList, setMessageList] = useState();
+
+  useEffect(() => {
+    if (Object.keys(discussInfo).length > 0) {
+      setMessageList(discussInfo.messages);
+    }
+  }, [discussInfo]);
 
   const discussId = discussInfo && discussInfo._id;
+
+  useEffect(() => {
+    socket.emit("join-room", discussID);
+
+    socket.on("received_message", (messageInfo) => {
+      setMessageList((prevState) => [...prevState, messageInfo.message]);
+    });
+  }, [discussID]);
+
   const sendMessage = () => {
+    const messageInfo = {
+      discussID: discussId,
+      message: { from: userId, text: messageText },
+    };
     axios({
       method: "post",
-      url: "http://localhost:3001/message/send",
+      url: `${process.env.REACT_APP_API_URL}/message/send`,
       data: {
         id: discussId,
         message: {
@@ -27,13 +49,15 @@ function Message({ discussInfo }) {
         Authorization: token,
       },
     }).then((response) => {
+      socket.emit("send_message", { messageInfo });
       console.log(response);
     });
     setMessageText("");
   };
+
   return (
     <div className="discuss_culumn">
-      {!discussInfo ? (
+      {Object.keys(discussInfo).length < 1 ? (
         <div className="inbox_empty">
           <img src={InboxImg} alt="" />
           <div>Démarrez une discussion</div>
@@ -46,7 +70,7 @@ function Message({ discussInfo }) {
             </div>
             <div className="discuss_info">
               <div className="discuss_name">
-                {discussInfo &&
+                {Object.keys(discussInfo).length > 0 &&
                   discussInfo.participants.map((user) =>
                     user._id !== userId
                       ? user.userName + " " + user.firstName
@@ -58,8 +82,18 @@ function Message({ discussInfo }) {
             <div></div>
           </div>
           <div className="discuss_messages">
-            {discussInfo &&
-              discussInfo.messages.map((message) =>
+            {loading ? (
+              <div className="loader">
+                <ClipLoader
+                  color="#1056e2"
+                  size={100}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              </div>
+            ) : (
+              messageList &&
+              messageList.map((message) =>
                 message.from === userId ? (
                   <div className="message-box in" key={message._id}>
                     <div className="message discuss_message_out">
@@ -73,7 +107,8 @@ function Message({ discussInfo }) {
                     </div>
                   </div>
                 )
-              )}
+              )
+            )}
           </div>
           <div className="discuss_bottom">
             <form

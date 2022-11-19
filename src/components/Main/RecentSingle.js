@@ -4,14 +4,17 @@ import axios from "axios";
 import Photo from "../../images/profile.jpg";
 import "./RecentSingle.css";
 
-function RecentSingle({ message, participants }) {
-  const { token, userId, setDiscuss } = useContext(userContext);
+function RecentSingle({ message, participants, idDiscuss }) {
+  const { token, userId, setDiscuss, setDiscussId, setLoading } =
+    useContext(userContext);
 
   const userIdDiscuss = participants
     .map((user) => (user._id !== userId ? user._id : null))
     .join("");
 
   const getMessage = (id) => {
+    setLoading(true);
+    setDiscussId(idDiscuss);
     axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}/message/discuss`,
@@ -23,6 +26,8 @@ function RecentSingle({ message, participants }) {
       },
     }).then((response) => {
       setDiscuss(response.data);
+      console.log(idDiscuss);
+      setLoading(false);
     });
   };
 

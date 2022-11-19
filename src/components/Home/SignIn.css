@@ -33,6 +33,20 @@
   outline: none;
 }
 
+input[type="file"]::file-selector-button {
+  border: 1px solid #fff;
+  padding: 0.4em 0.4em;
+  border-radius: 0.2em;
+  background-color: #a29bfe;
+  color: #fff;
+  transition: 1s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
+}
+
 .forgot_password {
   margin: auto;
 }

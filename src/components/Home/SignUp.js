@@ -7,7 +7,7 @@ function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  //const [profil, setProfil] = useState("");
+  const [profil, setProfil] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
@@ -114,6 +114,16 @@ function SignUp() {
             placeholder="Confirmer le mot de passe"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <div className="form_control">
+          <input
+            className="user_file"
+            type="file"
+            name="profil"
+            id="user_profil"
+            value={profil}
+            onChange={(e) => setProfil(e.target.value)}
           />
         </div>
         <p className="errorMessage">{errorMessage ? errorMessage : ""}</p>
