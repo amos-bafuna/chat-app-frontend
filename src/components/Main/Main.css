@@ -150,6 +150,11 @@
   border-radius: 15px;
 }
 
+.discuss_culumn_content {
+  height: 100%;
+  margin: 0 20px;
+}
+
 .discuss_profile {
   display: flex;
   justify-content: space-between;
@@ -217,10 +222,18 @@
   justify-content: flex-start;
   z-index: 2;
   box-sizing: border-box;
-  margin: 0 30px;
+  margin: 0 20px;
   width: auto;
   height: 440px;
-  overflow: scroll;
+}
+
+.discuss_messages::-webkit-scrollbar {
+  background: transparent;
+}
+
+.discuss_messages::-webkit-scrollbar-thumb {
+  background: #90ace4b2 !important;
+  margin-left: 5px !important;
 }
 
 .discuss_message .message {

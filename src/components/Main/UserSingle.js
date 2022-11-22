@@ -4,7 +4,7 @@ import { userContext } from "../../context";
 import Photo from "../../images/profile.jpg";
 import "./RecentSingle.css";
 
-function UserSingle({ name, lastName, contactId }) {
+function UserSingle({ name, firstName, contactId }) {
   const { token, userId, setDiscuss } = useContext(userContext);
 
   const getMessage = (id) => {
@@ -31,7 +31,7 @@ function UserSingle({ name, lastName, contactId }) {
         <img src={Photo} alt="" width="40" height="40" />
       </div>
       <div className="recent_detail">
-        <div className="recent_name">{name + " " + lastName}</div>
+        <div className="recent_name">{name + " " + firstName}</div>
       </div>
     </div>
   );

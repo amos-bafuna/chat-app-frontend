@@ -32,7 +32,7 @@ function Users() {
                 key={element.id}
                 contactId={element.id}
                 name={element.name}
-                lastName={element.lastName}
+                firstName={element.firstName}
               />
             ))
         ) : (

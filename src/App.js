@@ -16,6 +16,7 @@ function App() {
   const [allUsers, setAllUsers] = useState();
   const [discussID, setDiscussId] = useState();
   const [loading, setLoading] = useState();
+  const [sendMessageLoading, setSendMessageLoading] = useState();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -40,6 +41,8 @@ function App() {
         setDiscussId,
         loading,
         setLoading,
+        sendMessageLoading,
+        setSendMessageLoading,
       }}
     >
       <div className="App">{isConnected ? <Main /> : <Home />}</div>

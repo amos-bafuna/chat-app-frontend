@@ -39,7 +39,7 @@ function RecentSingle({ message, participants, idDiscuss }) {
       <div className="recent_detail">
         <div className="recent_name">
           {participants.map((user) =>
-            user._id !== userId ? user.userName + " " + user.lastName : ""
+            user._id !== userId ? user.userName + " " + user.firstName : ""
           )}
         </div>
         <div className="recent_message">{message?.text}</div>

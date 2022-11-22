@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { userContext } from "../../context";
 import axios from "axios";
 import "./SignIn.css";
 
 function SignUp() {
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [profil, setProfil] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const { setIsConnected } = useContext(userContext);
 
   const submit = () => {
     if (password !== confirmPassword) {
@@ -22,17 +22,19 @@ function SignUp() {
         data: {
           name: userName,
           firstName: firstName,
-          lastName: lastName,
           email: email,
           profil: "profil",
           password: password,
         },
       })
         .then((message) => {
-          console.log(message);
+          localStorage.setItem("token", message.data.token);
+          localStorage.setItem("userId", message.data.userId);
+          setIsConnected(true);
         })
         .catch((error) => {
           console.log(error);
+          setErrorMessage("L'email saisie est déjà utilisée!");
         });
     }
   };
@@ -74,17 +76,6 @@ function SignUp() {
           <input
             className="user_input"
             type="text"
-            name="lastName"
-            id="user_name"
-            placeholder="Votre post-nom"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="form_control">
-          <input
-            className="user_input"
-            type="text"
             name="email"
             id="user_email"
             placeholder="Votre adresse mail"
@@ -114,16 +105,6 @@ function SignUp() {
             placeholder="Confirmer le mot de passe"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <div className="form_control">
-          <input
-            className="user_file"
-            type="file"
-            name="profil"
-            id="user_profil"
-            value={profil}
-            onChange={(e) => setProfil(e.target.value)}
           />
         </div>
         <p className="errorMessage">{errorMessage ? errorMessage : ""}</p>
