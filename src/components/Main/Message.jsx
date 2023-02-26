@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import ProfileDiscuss from "../../images/profile2.jpeg";
-import { AiOutlineSend } from "react-icons/ai";
+import { useEffect } from "react";
+import { useState } from "react";
 import { userContext } from "../../context";
 import axios from "axios";
-import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
+import { AiOutlineSend } from "react-icons/ai";
 import InboxImg from "../../images/inbox.svg";
-import { useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import PuffLoader from "react-spinners/PuffLoader";
 import ClipLoader from "react-spinners/BounceLoader";
+import ProfileDiscuss from "../../images/profile2.jpeg";
 
 function Message({ discussInfo }) {
   const {
@@ -43,7 +45,7 @@ function Message({ discussInfo }) {
     setSendMessageLoading(true);
     const messageInfo = {
       discussID: discussId,
-      message: { from: userId, text: messageText },
+      message: { from: userId, text: messageText, _id: uuidv4() },
     };
     axios({
       method: "post",
@@ -115,14 +117,22 @@ function Message({ discussInfo }) {
                 messageList.map((message) =>
                   message.from === userId ? (
                     <div className="message-box in" key={message._id}>
-                      <div className="message discuss_message_out">
-                        {message.text}
+                      <div className="message">
+                        <div className="discuss_message_out">
+                          {message.text}
+                        </div>
+                        <div className="message_time_out">
+                          {moment().calendar(message.createdAt)}
+                        </div>
                       </div>
                     </div>
                   ) : (
                     <div className="message-box out" key={message._id}>
-                      <div className="message discuss_message_in">
-                        {message.text}
+                      <div className="message">
+                        <div className="discuss_message_in">{message.text}</div>
+                        <div className="message_time_in">
+                          {moment().calendar(message.createdAt)}
+                        </div>
                       </div>
                     </div>
                   )

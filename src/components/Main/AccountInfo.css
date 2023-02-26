@@ -1,0 +1,39 @@
+.account_fill_container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: #0000007b;
+  z-index: 8;
+}
+
+.account_container {
+  background: #00000033;
+  width: auto;
+  height: 100vh;
+  z-index: 6;
+}
+
+.account_card {
+  background: #fff;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: -4px -1px 13px -1px #0b0a0a99;
+}
+
+.card_header {
+  padding-top: 5px;
+}
+
+.card_header svg {
+  font-size: 25px;
+  transition: all 300ms ease-in;
+}
+
+.card_header svg:hover {
+  cursor: pointer;
+  color: #ff0000;
+}
